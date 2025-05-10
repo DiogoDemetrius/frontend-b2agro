@@ -84,8 +84,8 @@ Este projeto está sob a licença **MIT**. Consulte o arquivo `LICENSE` para mai
 
 ## 👥 Contribuidores
 
-- **[Seu Nome](https://github.com/seu-usuario)** - Desenvolvedor Frontend
-- **[Outro Contribuidor](https://github.com/outro-usuario)** - Designer
+- **[Diogo Demetrius](https://github.com/seu-usuario)** - Desenvolvedor Frontend
+- **[Diogo Demetrius](https://github.com/outro-usuario)** - Designer
 
 ---
 
