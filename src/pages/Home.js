@@ -121,7 +121,7 @@ export default function Home() {
             {[
               {
                 name: "João Silva",
-                role: "Produtor de Soja - MT",
+                role: "Produtor de Soja - DF",
                 testimonial: "A B2agro transformou nossa gestão financeira. Conseguimos reduzir nossa carga tributária em 23% no primeiro ano e ter uma visão muito mais clara dos nossos custos de produção."
               },
               {
