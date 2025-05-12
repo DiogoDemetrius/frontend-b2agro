@@ -17,16 +17,16 @@ export default function Home() {
               <p className="text-xl mb-8">Transformamos números em estratégias para impulsionar sua fazenda com soluções contábeis personalizadas.</p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button className="bg-white text-blue-950 hover:bg-blue-100 font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
-                  Fale com um especialista <ArrowRight className="ml-2 h-5 w-5" />
+                  <a href="/contato">Fale com um especialista</a> <ArrowRight className="ml-2 h-5 w-5" />
                 </button>
                 <button className="border-2 border-white hover:bg-white hover:text-blue-950 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
-                  Conheça nossos serviços
+                  <a href="/servicos">Conheça nossos serviços</a>
                 </button>
               </div>
             </div>
-            <div className="md:w-1/2">
+            {/*<div className="md:w-1/2">
               <img src="/api/placeholder/600/400" alt="Gestão contábil agropecuária" className="rounded-lg shadow-xl" />
-            </div>
+            </div>*/}
           </div>
         </div>
       </section>
@@ -101,7 +101,7 @@ export default function Home() {
               <div key={index} className="bg-gray-50 p-6 rounded-lg hover:shadow-md transition duration-300">
                 <h3 className="text-xl font-bold text-blue-900 mb-3">{service.title}</h3>
                 <p className="text-gray-600 mb-4">{service.description}</p>
-                <a href="#" className="text-green-600 font-semibold hover:text-green-700 flex items-center">
+                <a href="/servicos" className="text-green-600 font-semibold hover:text-green-700 flex items-center">
                   Saiba mais <ArrowRight className="ml-1 h-4 w-4" />
                 </a>
               </div>
@@ -175,11 +175,11 @@ export default function Home() {
           <p className="max-w-2xl mx-auto mb-8 text-lg">Agende uma análise gratuita das suas finanças e descubra oportunidades de economia e crescimento.</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="bg-white text-green-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-lg transition duration-300">
-              Agendar consulta gratuita
+              <a href="/contato">Agendar consulta gratuita</a>
             </button>
-            <button className="border-2 border-white hover:bg-white hover:text-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+            {/*<button className="border-2 border-white hover:bg-white hover:text-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
               Solicitar proposta
-            </button>
+            </button>*/}
           </div>
         </div>
       </section>
@@ -226,7 +226,7 @@ export default function Home() {
             ))}
           </div>
           <div className="text-center mt-8">
-            <a href="#" className="inline-block border-2 border-blue-900 text-blue-900 hover:bg-blue-950 hover:text-white font-bold py-2 px-6 rounded-lg transition duration-300">
+            <a href="/blog" className="inline-block border-2 border-blue-900 text-blue-900 hover:bg-blue-950 hover:text-white font-bold py-2 px-6 rounded-lg transition duration-300">
               Ver todos os artigos
             </a>
           </div>

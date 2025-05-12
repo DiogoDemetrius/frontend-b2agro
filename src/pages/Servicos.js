@@ -290,9 +290,9 @@ export default function Servicos() {
             <a href="/contato" className="bg-white text-green-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-lg transition duration-300">
               Falar com um especialista
             </a>
-            <a href="/contato" className="border-2 border-white hover:bg-white hover:text-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
+            {/*<a href="/contato" className="border-2 border-white hover:bg-white hover:text-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
               Solicitar proposta
-            </a>
+            </a>*/}
           </div>
         </div>
       </section>

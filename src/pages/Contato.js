@@ -201,10 +201,10 @@ export default function Contato() {
                       especialistas? Agende uma consulta gratuita.
                     </p>
                     <a
-                      href="#"
+                      href="https://wa.me/556181614932?text=Ol%C3%A1%2C+gostaria+de+falar+com+o+especialista+em+contabilidade+para+fazendas+da+B2agro.+Vi+o+bot%C3%A3o+no+site+e+quero+iniciar+um+atendimento+gratuito."
                       className="bg-blue-950 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-block"
                     >
-                      Agendar consulta gratuita
+                      Agendar via Whatsapp
                     </a>
                   </div>
                 </div>
@@ -279,11 +279,13 @@ export default function Contato() {
             expertise da B2agro.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-white text-green-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-lg transition duration-300">
+            {/*<button className="bg-white text-green-600 hover:bg-blue-100 font-bold py-3 px-8 rounded-lg transition duration-300">
               Agendar consulta gratuita
-            </button>
+            </button>*/}
             <button className="border-2 border-white hover:bg-white hover:text-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300">
-              Conhecer pacotes de serviços
+              <a href="https://wa.me/556181614932?text=Ol%C3%A1%2C+gostaria+de+falar+com+o+especialista+em+contabilidade+para+fazendas+da+B2agro.+Vi+o+bot%C3%A3o+no+site+e+quero+iniciar+um+atendimento+gratuito.">
+                Fale com um especilista via Whatsapp
+              </a>
             </button>
           </div>
         </div>
