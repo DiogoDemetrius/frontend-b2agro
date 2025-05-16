@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { ArrowRight, CheckCircle, BarChart2, FileText, TrendingUp, MessageCircle } from 'lucide-react';
+import { ArrowRight, FileText, TrendingUp, MessageCircle } from 'lucide-react';
 
 export default function Home() {
   return (
@@ -185,7 +185,7 @@ export default function Home() {
       </section>
       
       {/* Blog preview */}
-      <section className="py-16 bg-gray-50">
+      {/*<section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-blue-900 mb-4">Blog B2agro</h2>
@@ -231,7 +231,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </section>
+      </section>|*
       
       {/* Newsletter */}
       <section className="py-12 bg-white">

@@ -42,12 +42,12 @@ export default function Navbar() {
             >
               Serviços
             </a>
-            <a
+            {/*<a
               href="/blog"
               className="text-blue-900 hover:text-green-600 font-medium transition duration-300"
             >
               Blog
-            </a>
+            </a>*/}
             <a
               href="/contato"
               className="text-blue-900 hover:text-green-600 font-medium transition duration-300"
