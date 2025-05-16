@@ -56,11 +56,11 @@ export default function Footer() {
               <span className="absolute bottom-0 left-0 w-10 h-1 bg-green-600 -mb-2"></span>
             </h3>
             <ul className="space-y-3">
-              <li><a href="/servicos/contabilidade-rural" className="text-blue-200 hover:text-green-400 transition duration-300">Contabilidade Rural</a></li>
-              <li><a href="/servicos/planejamento-tributario" className="text-blue-200 hover:text-green-400 transition duration-300">Planejamento Tributário</a></li>
-              <li><a href="/servicos/gestao-financeira" className="text-blue-200 hover:text-green-400 transition duration-300">Gestão Financeira</a></li>
-              <li><a href="/servicos/consultoria-agro" className="text-blue-200 hover:text-green-400 transition duration-300">Consultoria Especializada</a></li>
-              <li><a href="/servicos/sucessao-familiar" className="text-blue-200 hover:text-green-400 transition duration-300">Sucessão Familiar</a></li>
+              <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Contabilidade Rural</a></li>
+              <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Planejamento Tributário</a></li>
+              <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Gestão Financeira</a></li>
+              <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Consultoria Tributária</a></li>
+              <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Sucessão Familiar</a></li>
             </ul>
           </div>
           

@@ -44,7 +44,7 @@ export default function Home() {
                 <FileText className="text-green-600 h-8 w-8" />
               </div>
               <h3 className="text-xl font-bold text-blue-900 mb-2">Expertise Rural</h3>
-              <p className="text-gray-600">Mais de 15 anos de experiência exclusiva em contabilidade rural e domínio da legislação do agronegócio.</p>
+              <p className="text-gray-600">Mais de 10 anos de experiência exclusiva em contabilidade rural e domínio da legislação do agronegócio.</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-blue-950">
               <div className="bg-blue-100 p-3 rounded-full w-16 h-16 flex items-center justify-center mb-4">
@@ -65,7 +65,7 @@ export default function Home() {
       </section>
       
       {/* Serviços */}
-      <section className="py-16 bg-white">
+      {/*<section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-blue-900 mb-4">Nossos Serviços</h2>
@@ -108,7 +108,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section>*/}
       
       {/* Depoimentos */}
       <section className="py-16 bg-blue-950 text-white">

@@ -35,7 +35,7 @@ export default function Servicos() {
     },
     {
       icon: <Users className="h-8 w-8 text-green-600" />,
-      title: "Planejamento Sucessório",
+      title: "Sucessão Familiar",
       description:
         "Preparação da transferência patrimonial com segurança jurídica e tributária para as próximas gerações.",
       features: [
