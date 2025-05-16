@@ -154,8 +154,8 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
-              { number: "1500+", label: "Clientes atendidos" },
-              { number: "15", label: "Anos de experiência" },
+              { number: "1000+", label: "Clientes atendidos" },
+              { number: "10+", label: "Anos de experiência" },
               { number: "32%", label: "Média de economia tributária" },
               { number: "98%", label: "Taxa de retenção de clientes" }
             ].map((stat, index) => (

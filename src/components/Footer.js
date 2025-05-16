@@ -1,5 +1,6 @@
 import React from 'react';
 import { MapPin, Phone, Mail, Clock, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import logo from '../assets/logo.png';
 
 export default function Footer() {
   return (
@@ -9,9 +10,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center mb-6">
-              <div className="mr-3 h-8 w-8 rounded bg-gradient-to-r from-green-600 to-blue-950 border border-white"></div>
-              <span className="text-2xl font-bold">B2<span className="text-green-400">agro</span></span>
+            <div className="flex items-center space-x-4 mb-6">
+              <img src={logo} alt="B2agro Logo" className="h-10 w-10 rg-20" />
+              <span className="text-2xl font-bold lg-20">B2<span className="text-green-400">agro</span></span>
             </div>
             <p className="mb-6 text-blue-100">
               Há mais de 10 anos transformando a contabilidade rural em uma ferramenta estratégica para o crescimento do seu negócio.
@@ -20,15 +21,15 @@ export default function Footer() {
               <a href="#" className="bg-blue-950 border-blue-900 hover:bg-green-600 p-2 rounded-full transition duration-300">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
+              <a href="https://www.instagram.com/b2agro_/" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
+              <a href="https://www.linkedin.com/company/b2agro/" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
+              {/*<a href="#" className="bg-blue-800 hover:bg-green-600 p-2 rounded-full transition duration-300">
                 <Twitter className="h-5 w-5" />
-              </a>
+              </a>*/}
             </div>
           </div>
           
