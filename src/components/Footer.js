@@ -42,7 +42,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li><a href="/sobre" className="text-blue-200 hover:text-green-400 transition duration-300">Sobre Nós</a></li>
               <li><a href="/servicos" className="text-blue-200 hover:text-green-400 transition duration-300">Nossos Serviços</a></li>
-              <li><a href="/blog" className="text-blue-200 hover:text-green-400 transition duration-300">Blog</a></li>
+              {/*<li><a href="/blog" className="text-blue-200 hover:text-green-400 transition duration-300">Blog</a></li>*/}
               <li><a href="/cases" className="text-blue-200 hover:text-green-400 transition duration-300">Casos de Sucesso</a></li>
               <li><a href="/contato" className="text-blue-200 hover:text-green-400 transition duration-300">Fale Conosco</a></li>
               <li><a href="/trabalhe" className="text-blue-200 hover:text-green-400 transition duration-300">Trabalhe Conosco</a></li>
@@ -119,8 +119,6 @@ export default function Footer() {
             </p>
             <div className="flex flex-wrap gap-4 text-sm text-blue-200">
               <a href="/politica-privacidade" className="hover:text-green-400 transition duration-300">Política de Privacidade</a>
-              <a href="/termos-uso" className="hover:text-green-400 transition duration-300">Termos de Uso</a>
-              <a href="/cookies" className="hover:text-green-400 transition duration-300">Política de Cookies</a>
             </div>
           </div>
         </div>

@@ -5,6 +5,8 @@ import Sobre from './pages/Sobre';
 import Servicos from './pages/Servicos';
 import Blog from './pages/Blog';
 import Contato from './pages/Contato';
+import PoliticaPrivacidade from './pages/PoliticaPrivacidade';
+import ServicoDetalhe from './pages/ServicoDetalhe';  
 import './App.css';
 
 function App() {
@@ -14,8 +16,10 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sobre" element={<Sobre />} />
         <Route path="/servicos" element={<Servicos />} />
+        <Route path="/servicos/:id" element={<ServicoDetalhe />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/contato" element={<Contato />} />
+        <Route path="/politica-privacidade" element={<PoliticaPrivacidade />} />
       </Routes>
     </Router>
   );

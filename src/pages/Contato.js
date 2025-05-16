@@ -146,7 +146,7 @@ export default function Contato() {
                     <input type="checkbox" id="privacy" className="mt-1 mr-2" />
                     <label htmlFor="privacy" className="text-gray-700 text-sm">
                       Concordo com a{" "}
-                      <a href="#" className="text-green-600 hover:underline">
+                      <a href="/politica-privacidade" className="text-green-600 hover:underline">
                         Política de Privacidade
                       </a>{" "}
                       e autorizo o contato por e-mail e telefone.
@@ -198,13 +198,13 @@ export default function Contato() {
                     </h3>
                     <p className="text-gray-700 mb-4">
                       Prefere conversar diretamente com um de nossos
-                      especialistas? Agende uma consulta gratuita.
+                      especialistas? Inicie uma gratuita.
                     </p>
                     <a
                       href="https://wa.me/556181614932?text=Ol%C3%A1%2C+gostaria+de+falar+com+o+especialista+em+contabilidade+para+fazendas+da+B2agro.+Vi+o+bot%C3%A3o+no+site+e+quero+iniciar+um+atendimento+gratuito."
                       className="bg-blue-950 hover:bg-blue-900 text-white font-bold py-3 px-6 rounded-lg transition duration-300 inline-block"
                     >
-                      Agendar via Whatsapp
+                      Conversar via Whatsapp
                     </a>
                   </div>
                 </div>
