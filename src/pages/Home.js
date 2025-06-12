@@ -234,7 +234,7 @@ export default function Home() {
       </section>|*
       
       {/* Newsletter */}
-      <section className="py-12 bg-white">
+      {/*<section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-green-600 to-blue-900 rounded-lg p-8 md:p-12">
             <div className="md:flex items-center">
@@ -257,7 +257,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
       
       <Footer />
     </div>

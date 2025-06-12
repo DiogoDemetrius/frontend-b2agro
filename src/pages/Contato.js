@@ -198,7 +198,7 @@ export default function Contato() {
                     </h3>
                     <p className="text-gray-700 mb-4">
                       Prefere conversar diretamente com um de nossos
-                      especialistas? Inicie uma gratuita.
+                      especialistas? Inicie uma conversa gratuita.
                     </p>
                     <a
                       href="https://wa.me/556181614932?text=Ol%C3%A1%2C+gostaria+de+falar+com+o+especialista+em+contabilidade+para+fazendas+da+B2agro.+Vi+o+bot%C3%A3o+no+site+e+quero+iniciar+um+atendimento+gratuito."
@@ -292,7 +292,7 @@ export default function Contato() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-12 bg-white">
+      {/*<section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-green-600 to-blue-900 rounded-lg p-8 md:p-12">
             <div className="md:flex items-center">
@@ -320,7 +320,7 @@ export default function Contato() {
             </div>
           </div>
         </div>
-      </section>
+      </section>*/}
 
       <Footer />
     </div>
