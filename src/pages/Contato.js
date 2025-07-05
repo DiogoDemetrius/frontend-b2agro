@@ -19,6 +19,12 @@ export default function Contato() {
   const [error, setError] = useState('');
   const [errors, setErrors] = useState({});
 
+  // Estados para newsletter
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterLoading, setNewsletterLoading] = useState(false);
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+  const [newsletterError, setNewsletterError] = useState('');
+
   const faqItems = [
     {
       question: "Como funciona o primeiro atendimento?",
@@ -119,6 +125,42 @@ export default function Contato() {
       setError('Erro ao enviar mensagem. Verifique sua conexão e tente novamente.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!newsletterEmail.trim()) {
+      setNewsletterError('E-mail é obrigatório');
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(newsletterEmail)) {
+      setNewsletterError('E-mail inválido');
+      return;
+    }
+
+    setNewsletterLoading(true);
+    setNewsletterError('');
+    setNewsletterSuccess(false);
+
+    try {
+      const response = await axios.post('https://backend-b2agro.onrender.com/api/newsletter', {
+        email: newsletterEmail
+      });
+      
+      if (response.data.sucesso) {
+        setNewsletterSuccess(true);
+        setNewsletterEmail('');
+      } else {
+        setNewsletterError('Erro ao assinar newsletter. Tente novamente.');
+      }
+    } catch (err) {
+      console.error('Erro ao assinar newsletter:', err);
+      setNewsletterError('Erro ao assinar newsletter. Verifique sua conexão e tente novamente.');
+    } finally {
+      setNewsletterLoading(false);
     }
   };
 
@@ -470,7 +512,7 @@ export default function Contato() {
       </section>
 
       {/* Newsletter Section */}
-      {/*<section className="py-12 bg-white">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <div className="bg-gradient-to-r from-green-600 to-blue-900 rounded-lg p-8 md:p-12">
             <div className="md:flex items-center">
@@ -484,21 +526,52 @@ export default function Contato() {
                 </p>
               </div>
               <div className="md:w-1/3">
-                <div className="flex">
-                  <input
-                    type="email"
-                    placeholder="Seu e-mail"
-                    className="flex-1 p-3 rounded-l-lg focus:outline-none"
-                  />
-                  <button className="bg-green-600 hover:bg-green-700 text-white font-bold p-3 rounded-r-lg transition duration-300">
-                    Assinar
-                  </button>
-                </div>
+                <form onSubmit={handleNewsletterSubmit} className="flex flex-col space-y-2">
+                  <div className="flex">
+                    <input
+                      type="email"
+                      placeholder="Seu e-mail"
+                      value={newsletterEmail}
+                      onChange={(e) => {
+                        setNewsletterEmail(e.target.value);
+                        if (newsletterError) setNewsletterError('');
+                      }}
+                      className={`flex-1 p-3 rounded-l-lg focus:outline-none ${
+                        newsletterError ? 'border-2 border-red-500' : ''
+                      }`}
+                      disabled={newsletterLoading}
+                    />
+                    <button 
+                      type="submit"
+                      disabled={newsletterLoading}
+                      className={`font-bold p-3 rounded-r-lg transition duration-300 flex items-center ${
+                        newsletterLoading 
+                          ? 'bg-gray-400 cursor-not-allowed' 
+                          : 'bg-green-600 hover:bg-green-700 text-white'
+                      }`}
+                    >
+                      {newsletterLoading ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        'Assinar'
+                      )}
+                    </button>
+                  </div>
+                  {newsletterError && (
+                    <p className="text-red-200 text-sm">{newsletterError}</p>
+                  )}
+                  {newsletterSuccess && (
+                    <div className="flex items-center text-green-200 text-sm">
+                      <CheckCircle className="h-4 w-4 mr-1" />
+                      Newsletter assinada com sucesso!
+                    </div>
+                  )}
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>*/}
+      </section>
 
       <Footer />
     </div>
