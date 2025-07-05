@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Calendar, CheckCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, Send, MessageSquare, Calendar, CheckCircle, Loader2 } from 'lucide-react';
 
 export default function Contato() {
-  
+  const [formData, setFormData] = useState({
+    nome: '',
+    telefone: '',
+    email: '',
+    assunto: '',
+    mensagem: '',
+    aceitePolitica: false
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
+  const [errors, setErrors] = useState({});
+
   const faqItems = [
     {
       question: "Como funciona o primeiro atendimento?",
@@ -23,6 +37,90 @@ export default function Contato() {
       answer: "O investimento varia de acordo com a complexidade da operação e os serviços contratados. Oferecemos pacotes personalizados com excelente custo-benefício. Entre em contato para uma proposta específica."
     }
   ];
+
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    
+    // Limpar erro do campo quando usuário começa a digitar
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.nome.trim()) {
+      newErrors.nome = 'Nome é obrigatório';
+    }
+
+    if (!formData.telefone.trim()) {
+      newErrors.telefone = 'Telefone é obrigatório';
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'E-mail é obrigatório';
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = 'E-mail inválido';
+    }
+
+    if (!formData.assunto) {
+      newErrors.assunto = 'Assunto é obrigatório';
+    }
+
+    if (!formData.mensagem.trim()) {
+      newErrors.mensagem = 'Mensagem é obrigatória';
+    }
+
+    if (!formData.aceitePolitica) {
+      newErrors.aceitePolitica = 'Você deve aceitar a política de privacidade';
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      return;
+    }
+
+    setLoading(true);
+    setError('');
+    setSuccess(false);
+
+    try {
+      const response = await axios.post('https://backend-b2agro.onrender.com/api/mensagens', formData);
+      
+      if (response.data.sucesso) {
+        setSuccess(true);
+        setFormData({
+          nome: '',
+          telefone: '',
+          email: '',
+          assunto: '',
+          mensagem: '',
+          aceitePolitica: false
+        });
+      } else {
+        setError('Erro ao enviar mensagem. Tente novamente.');
+      }
+    } catch (err) {
+      console.error('Erro ao enviar mensagem:', err);
+      setError('Erro ao enviar mensagem. Verifique sua conexão e tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -54,35 +152,64 @@ export default function Contato() {
                   em até 24 horas úteis.
                 </p>
 
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  {/* Mensagens de feedback */}
+                  {success && (
+                    <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg">
+                      Mensagem enviada com sucesso! Entraremos em contato em breve.
+                    </div>
+                  )}
+                  
+                  {error && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label
-                        htmlFor="name"
+                        htmlFor="nome"
                         className="block text-gray-700 font-medium mb-1"
                       >
                         Nome
                       </label>
                       <input
                         type="text"
-                        id="name"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                        id="nome"
+                        name="nome"
+                        value={formData.nome}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                          errors.nome ? 'border-red-500' : 'border-gray-300'
+                        }`}
                         placeholder="Seu nome completo"
                       />
+                      {errors.nome && (
+                        <p className="text-red-500 text-sm mt-1">{errors.nome}</p>
+                      )}
                     </div>
                     <div>
                       <label
-                        htmlFor="phone"
+                        htmlFor="telefone"
                         className="block text-gray-700 font-medium mb-1"
                       >
                         Telefone
                       </label>
                       <input
                         type="tel"
-                        id="phone"
-                        className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                        id="telefone"
+                        name="telefone"
+                        value={formData.telefone}
+                        onChange={handleInputChange}
+                        className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                          errors.telefone ? 'border-red-500' : 'border-gray-300'
+                        }`}
                         placeholder="(00) 00000-0000"
                       />
+                      {errors.telefone && (
+                        <p className="text-red-500 text-sm mt-1">{errors.telefone}</p>
+                      )}
                     </div>
                   </div>
 
@@ -96,21 +223,34 @@ export default function Contato() {
                     <input
                       type="email"
                       id="email"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      }`}
                       placeholder="seu@email.com"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
                     <label
-                      htmlFor="subject"
+                      htmlFor="assunto"
                       className="block text-gray-700 font-medium mb-1"
                     >
                       Assunto
                     </label>
                     <select
-                      id="subject"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                      id="assunto"
+                      name="assunto"
+                      value={formData.assunto}
+                      onChange={handleInputChange}
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                        errors.assunto ? 'border-red-500' : 'border-gray-300'
+                      }`}
                     >
                       <option value="">Selecione um assunto</option>
                       <option value="contabilidade">Contabilidade Rural</option>
@@ -125,26 +265,44 @@ export default function Contato() {
                       <option value="financeira">Gestão Financeira</option>
                       <option value="outro">Outro assunto</option>
                     </select>
+                    {errors.assunto && (
+                      <p className="text-red-500 text-sm mt-1">{errors.assunto}</p>
+                    )}
                   </div>
 
                   <div>
                     <label
-                      htmlFor="message"
+                      htmlFor="mensagem"
                       className="block text-gray-700 font-medium mb-1"
                     >
                       Mensagem
                     </label>
                     <textarea
-                      id="message"
+                      id="mensagem"
+                      name="mensagem"
+                      value={formData.mensagem}
+                      onChange={handleInputChange}
                       rows="5"
-                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600"
+                      className={`w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 ${
+                        errors.mensagem ? 'border-red-500' : 'border-gray-300'
+                      }`}
                       placeholder="Como podemos ajudar?"
                     ></textarea>
+                    {errors.mensagem && (
+                      <p className="text-red-500 text-sm mt-1">{errors.mensagem}</p>
+                    )}
                   </div>
 
                   <div className="flex items-start">
-                    <input type="checkbox" id="privacy" className="mt-1 mr-2" />
-                    <label htmlFor="privacy" className="text-gray-700 text-sm">
+                    <input 
+                      type="checkbox" 
+                      id="aceitePolitica" 
+                      name="aceitePolitica"
+                      checked={formData.aceitePolitica}
+                      onChange={handleInputChange}
+                      className={`mt-1 mr-2 ${errors.aceitePolitica ? 'border-red-500' : ''}`}
+                    />
+                    <label htmlFor="aceitePolitica" className="text-gray-700 text-sm">
                       Concordo com a{" "}
                       <a href="/politica-privacidade" className="text-green-600 hover:underline">
                         Política de Privacidade
@@ -152,9 +310,29 @@ export default function Contato() {
                       e autorizo o contato por e-mail e telefone.
                     </label>
                   </div>
+                  {errors.aceitePolitica && (
+                    <p className="text-red-500 text-sm mt-1">{errors.aceitePolitica}</p>
+                  )}
 
-                  <button className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center">
-                    Enviar mensagem <Send className="ml-2 h-4 w-4" />
+                  <button 
+                    type="submit"
+                    disabled={loading}
+                    className={`font-bold py-3 px-6 rounded-lg transition duration-300 flex items-center justify-center ${
+                      loading 
+                        ? 'bg-gray-400 cursor-not-allowed' 
+                        : 'bg-green-600 hover:bg-green-700 text-white'
+                    }`}
+                  >
+                    {loading ? (
+                      <>
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        Enviar mensagem <Send className="ml-2 h-4 w-4" />
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
